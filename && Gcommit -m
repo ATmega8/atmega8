@@ -1,0 +1,33 @@
+---
+layout : post
+title : QP模板文件解析
+tag : 状态机
+---
+
+###模板文件组成
+
+一般来说，模板文件包含以下部分
+
+* \#include 指令
+* 列出所有状态过渡信号，用一个枚举体表示它们。例如：
+
+~~~~~~~~~~~~~~~~~~~~ c
+enum ActiveObject1signals
+{
+	TRIG1_SIG=Q_USER_SIG
+	TRIG2_SIG,
+	MAX_PUB_SIG,
+	MAX_SIG
+};
+~~~~~~~~~~~~~~~~~~~~
+
+Q_USER_SIG，MAX_PUB_SIG和MAX_SIG指令是框架识别工具。
+
+* 声明将要被公共接收（publish-subscribe）使用信号列表，用一个向量格式：
+
+~~~~~~~~~~~~~~ c
+static QSubscrList l_subscrSto[MAX_PUB_SIG];
+~~~~~~~~~~~~~~
+
+* 事件池声明
+
