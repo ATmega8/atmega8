@@ -16,6 +16,7 @@
 
     <!-- Le styles -->
 	<link rel="stylesheet" type="text/css" href="pygments.css">
+    <link href="/assets/themes//google-code-prettify/desert.css" rel="stylesheet" type="text/css" media="all">
     <link href="{{ ASSET_PATH }}/bootstrap/css/bootstrap.2.2.2.min.css" rel="stylesheet">
     <link href="{{ ASSET_PATH }}/css/style.css?body=1" rel="stylesheet" type="text/css" media="all">
 <!-- "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }mathjax config similar to math.stackexchange -->
@@ -35,6 +36,12 @@ MathJax.Hub.Config({
 });
 </script>
 <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
+<script type="text/javascript" src="/assets/themes//google-code-prettify/prettify.js"></script>
+<script>
+    $(function() {
+	   $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto');
+	 });
+</script>
     <!-- Le fav and touch icons -->
   <!-- Update these with your own images
     <link rel="shortcut icon" href="images/favicon.ico">
