@@ -63,6 +63,7 @@ JB :
   #   /assets
   #
   ASSET_PATH : false
+  img_url: http://www.xmmssmmx.com/image
 
   # These paths are to the main pages Jekyll-Bootstrap ships with.
   # Some JB helpers refer to these paths; change them here if needed.
@@ -78,7 +79,7 @@ JB :
   # Set 'provider' to false to turn commenting off globally.
   #
   comments :
-    provider : disqus
+    provider : 
     disqus :
       short_name : jekyllbootstrap
     livefyre :
