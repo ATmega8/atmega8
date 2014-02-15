@@ -14,9 +14,9 @@ author :
   email : liuyang.grub@gmail.com 
   github : atmega8
 
-#markdown: redcarpet
-#kramdown:
-#    use_coderay: true
+markdown: redcarpet
+kramdown:
+    use_coderay: true
 # The production_url is only used when full-domain names are needed
 # such as sitemap.txt 
 # Most places will/should use BASE_PATH to make the urls
