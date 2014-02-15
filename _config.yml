@@ -14,7 +14,7 @@ author :
   email : liuyang.grub@gmail.com 
   github : atmega8
 
-markdown: redcarpet
+#markdown: redcarpet
 kramdown:
     use_coderay: true
 # The production_url is only used when full-domain names are needed
