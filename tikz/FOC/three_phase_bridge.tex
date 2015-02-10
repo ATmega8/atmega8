@@ -1,0 +1,54 @@
+% 三相逆变桥
+% Author: L.
+\documentclass[border=10pt,varwidth]{standalone}
+\usepackage{circuitikz}
+\usepackage{siunitx}
+\usepackage{amsmath, amssymb}
+\begin{document}
+\begin{circuitikz}[american voltages, european resistors] \draw
+(0,3) node[nigbt] (a_h) {}
+(0,0) node[nigbt] (a_l) {}
+(2,3) node[nigbt] (b_h) {}
+(2,0) node[nigbt] (b_l) {}
+(4,3) node[nigbt] (c_h) {}
+(4,0) node[nigbt] (c_l) {}
+
+%C
+(a_h.C) --++ (-2, 0)node[circ] {} --++
+(0,-1) to[C=$C$] (-2, 0)
+
+%Vpp
+ (-4, 0) to[V=$V_{dc}$] (-4, 3) 
+ (a_h.C) ++ (-2,0) --++ (-2,0) -- (-4,3)
+ 
+%C								
+(a_l.E) --++ (-2, 0)node[circ] {} -- (-2, 0)
+
+%Vpp
+(a_l.E) ++(-2, 0) --++ (-2, 0) -- (-4, 0) 
+
+%igbt
+(a_h.E) -- (a_l.C)
+(b_h.E) -- (b_l.C)
+(c_h.E) -- (c_l.C)
+
+(a_h.C) node[circ] {} -- (b_h.C) node[circ] {} -- (c_h.C)
+(a_l.E) node[circ] {} -- (b_l.E) node[circ] {} -- (c_l.E)
+
+
+%R
+ (1, -2) to[R=$R_b$] (1, -4) node[circ] {}
+ (1, -4) ++(210:2) to[R=$R_a$] (1, -4)
+ (1, -4) ++(-30:2) to[R=$R_c$] (1, -4)
+
+(a_l.C) ++ (0, .75) node[circ] {} node[anchor=east] {$V_a$}
+ --++ (.5, 0) --++(0, -4.5) --++ (210:2.08)  --++ (-60:1.14)
+
+(b_l.C) ++ (0, .75) node[circ] {} node[anchor=east] {$V_b$} 
+--++ (.5, 0) --++(0, -3) -| (1,-2)
+
+ (1,-4) ++ (-30:2) -| (4.5,1.5) --++ (-.5, 0) node[circ] {} 
+ node[anchor=east] {$V_c$}
+
+;\end{circuitikz}
+\end{document}
