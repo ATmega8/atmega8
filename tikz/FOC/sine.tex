@@ -1,0 +1,57 @@
+% Power electronics---a controlled full-wave rectifier and
+% it's output voltage and current waveforms.
+% The delay angle \alpha is customizable. 
+% Author: Ali Mehrizi-Sani
+\documentclass[border=10pt]{standalone}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage[american,cuteinductors,smartlabels]{circuitikz}
+\usetikzlibrary{calc}
+
+\begin{document}
+\begin{tikzpicture}
+\begin{scope}[scale=3]
+	\newcommand{\alphab}{60 * pi / 180}
+	\newcommand{\alphad}{120 * pi / 180}
+	\newcommand{\alphag}{240 * pi / 180}
+	\newcommand{\alphai}{300 * pi / 180}
+
+    \draw[thin, ->] (-2.3, 0) -- (6.5,0) node[right] {$\omega t$};
+    \draw[thin, ->] (0, -1.2) -- (0,1.2) node[right] {$U$};
+    
+    \draw[thin, ->] (-1.3, -1.2) -- (-1.3,1.2) node[right] {$U_q$};
+    \draw[thin, ->] (-1.3, 0) --+ (120:1.2) node[right] {$Vb$};
+    \draw[thin, ->] (-1.3, 0) --+ (240:1.2) node[right] {$Vc$};
+    
+    \node[anchor= north east]() {$O$};
+    
+    \draw[thick, ->] (-1.3,0) --+ (35:1);
+    \draw[help lines] (-1.3, 0) ++ (35:1) --++ (0.91,0);
+    
+    \foreach \x/\xtext in 
+     {{\alphab}/\frac{\pi}{3},
+      {\alphad}/\frac{2\pi}{3},
+      {pi}/{\pi},
+      {\alphag}/\frac{4\pi}{3},
+      {\alphai}/\frac{5\pi}{3},
+      {2*pi}/{2\pi}}
+		\draw[help lines] 
+		(\x, 1) -- (\x,-1) node [below] {$\xtext$};
+	
+    %0
+    \draw[domain=0:2*pi, help lines, smooth, color=red]
+        plot (\x,{sin(\x r)});
+    % -120
+    \draw[domain=0:2*pi, help lines, smooth, color=green]
+        plot (\x, {sin((\x*180/pi)-120)});
+    %+120
+        % -Vs
+        \draw[domain=0:2*pi, help lines, smooth, color=blue]
+        plot (\x, {sin((\x*180/pi)+120)});
+        
+    \node[right,color=blue] at (0,  0.85) {$V_{ca}$};
+    \node[right,color=red] at (0, -0.2) {$V_{ab}$};
+    \node[right,color=green] at (0, -0.8) {$V_{bc}$};
+
+\end{scope}
+\end{tikzpicture}
+\end{document} 
