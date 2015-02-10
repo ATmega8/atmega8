@@ -1,17 +1,17 @@
 % 三相逆变桥
 % Author: L.
-\documentclass[border=10pt,varwidth]{standalone}
+\documentclass[border=10pt]{standalone}
 \usepackage{circuitikz}
 \usepackage{siunitx}
 \usepackage{amsmath, amssymb}
 \begin{document}
 \begin{circuitikz}[american voltages, european resistors] \draw
-(0,3) node[nigbt] (a_h) {}
-(0,0) node[nigbt] (a_l) {}
-(2,3) node[nigbt] (b_h) {}
-(2,0) node[nigbt] (b_l) {}
-(4,3) node[nigbt] (c_h) {}
-(4,0) node[nigbt] (c_l) {}
+(0,3) node[nigbt] (a_h) {$A_H$}
+(0,0) node[nigbt] (a_l) {$A_L$}
+(2,3) node[nigbt] (b_h) {$B_H$}
+(2,0) node[nigbt] (b_l) {$B_L$}
+(4,3) node[nigbt] (c_h) {$C_H$}
+(4,0) node[nigbt] (c_l) {$C_L$}
 
 %C
 (a_h.C) --++ (-2, 0)node[circ] {} --++
